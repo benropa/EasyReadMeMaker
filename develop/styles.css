@@ -1,0 +1,15 @@
+header{
+  display: flex;
+  justify-content: center;
+}
+main h2{
+  padding-left: 10%;
+}
+main p{
+  padding-left: 15%;
+  padding-right: 15%;
+}
+footer{
+  display: flex;
+  justify-content: space-around;
+}
