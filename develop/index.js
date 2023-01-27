@@ -18,7 +18,7 @@ const askUser = () => {
                 name: 'description',
             },
         ])
-    }
+    };
 
 askUser();
 
