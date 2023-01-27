@@ -1,27 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const utilize = require('utilize');
 
-
-function writeMd({GitHub, description}) {
-    const md =`
-    # ${GitHub}
-
-    ## ${description}`
-   
-    return md; 
-}
-
-           
-
-function writeMdFile(MdString) {
-    fs.writeFile('index.md', MdString, (err) => {
-        if (err) {
-            console.error(err)
-        } else {
-            console.log('Success: Md File Generated!')
-        }
-    })
-}
+// First, inquirer will allow us to gather user input
 
 function main() {
     inquirer
@@ -33,22 +14,30 @@ function main() {
             },
             {
                 type: 'input',
-                message: 'Add a description of your project:',
+                message: 'Add a description to your Read Me file:',
                 name: 'description',
             },
         ])
-
-        .then((response) => {
-            const prompt = {
-                GitHub: response.name,
-                description: response.location,
-            }
-
-            const html = writeMd(prompt);
-
-            writeMdFile(md);
-
-        });
-}
+    }
 
 main();
+
+// Next we need to generate a ReadMe.md file
+
+const createMDfile = (Ui) => {
+    return `# ${Ui.Github}
+    ## ${Ui.description}
+
+`
+}
+
+const init = () => {
+    askUser()
+        .then((Ui) => placeInFile('readme.md', createMDfile(Ui)))
+        .then(() => console.log('successfully created README'))
+        .catch((err) => console.error(err));
+};
+
+init();
+           
+// Finally, we will insert the user's input within the md file for a professional looking product
