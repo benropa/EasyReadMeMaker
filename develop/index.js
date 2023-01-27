@@ -1,12 +1,12 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const utilize = require('utilize');
+const util = require('util');
 
 // First, inquirer will allow us to gather user input
+const placeInFile = util.promisify(fs.writeFile)
 
-function main() {
-    inquirer
-        .prompt([
+const askUser = () => {
+     return inquirer.prompt([
             {
                 type: 'input',
                 message: 'What is your github username?',
@@ -20,14 +20,13 @@ function main() {
         ])
     }
 
-main();
+askUser();
 
 // Next we need to generate a ReadMe.md file
 
 const createMDfile = (Ui) => {
     return `# ${Ui.Github}
     ## ${Ui.description}
-
 `
 }
 
@@ -39,5 +38,3 @@ const init = () => {
 };
 
 init();
-           
-// Finally, we will insert the user's input within the md file for a professional looking product
