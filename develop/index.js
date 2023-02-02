@@ -1,9 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const util = require('util');
+const util = require('./utils/generateMarkdown');
 
 // First, inquirer will allow us to gather user input
-const placeInFile = util.promisify(fs.writeFile)
 
 const askUser = () => {
      return inquirer.prompt([
@@ -58,28 +57,7 @@ const askUser = () => {
 askUser();
 
 // Next we need to generate a ReadMe.md file
-
-const createMDfile = (Ui) => {
-    return `Project Title: # ${Ui.projectName}
-    ## Description
-    Please outline the purpose of this application, your motivation for creating the project, and what you learned while building it. 
-    - ${Ui.purpose}
-    - ${Ui.build}
-    - ${Ui.skills}
-    ## Table of Contents
-    For more complex projects, consider including a table of contents to simplify the navigation process for a user
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Credits](#credits)
-    - [License](#license)
-    ## Installation
-    - Usage
-    - License
-    - Contributing
-    - Tests
-    - Questions
-    `      
-}
+const placeInFile = util.promisify(fs.writeFile)
 
 const init = () => {
     askUser()
