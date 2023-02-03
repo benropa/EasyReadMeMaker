@@ -1,69 +1,80 @@
+// file interactions
 const inquirer = require('inquirer');
-const fs = require('fs');
-const util = require('./utils/generateMarkdown');
+const fs = require('fs/promises');
+const Markdown = require('./utils/generateMarkdown');
 
-// First, inquirer will allow us to gather user input
 
-const askUser = () => {
-     return inquirer.prompt([
-            {
-                type: 'input',
-                message: 'What is the name of your project?',
-                name: 'projectName',
-            },
-            {
-                type: 'input',
-                message: 'What is the purpose of your application?',
-                name: 'purpose',
-            },
-            {
-                type: 'input',
-                message: 'Why did you build this project?',
-                name: 'build',
-            },
-            {
-                type: 'input',
-                message: 'What did you learn while creating this app?',
-                name: 'skills',
-            },
-            {
-                type: 'input',
-                message: 'What is necessary to use your project?',
-                name: 'useProject',
-            },
-            {
-                type: 'input',
-                message: 'Are there any other collaborators you would like to include? List them here:',
-                name: 'credits',
-            },
-            {
-                type: 'input',
-                message: 'Name the coding programs and languages you used here:',
-                name: 'programs',
-            },
-            {
-                type: 'input',
-                message: 'What is your GitHub username?',
-                name: 'github',
-            },
-            {
-                type: 'input',
-                message: 'What is your email?',
-                name: 'contact',
-            },
-        ])
-    };
+// Prompt user with questions
+const ask = [{
+  type: 'input',
+  name: 'title',
+  message: 'What is the title of your project?',
+},
+{
+  type: 'input',
+  name: 'description',
+  message: 'Enter a description of your project:',
+},
+{
+  type: 'input',
+  name: 'installs',
+  message: 'Enter installation instructions:',
+},
+{
+  type: 'input',
+  name: 'use',
+  message: 'Enter instructions on how to use application:',
+},
+{
+  type: 'input',
+  name: 'links',
+  message: 'Enter links to files related to project:',
+},
+{
+  type: 'input',
+  name: 'collab',
+  message: 'Enter a list of collaborators:',
+},
+{
+  type: 'list',
+  name: 'license',
+  message: 'Choose a license for your project:',
+  choices: ['Apache', 'GNU', 'MIT', 'BSD', 'Mozilla', 'None', 'Unlicense'],
+},
+{
+  type: 'input',
+  name: 'contributions',
+  message: 'Enter contributions:',
+},
+{
+  type: 'input',
+  name: 'test',
+  message: 'Enter instructions for testing:',
+},
+{
+  type: 'input',
+  name: 'gitHub',
+  message: 'Enter your github username:',
+},
+{
+  type: 'input',
+  name: 'email',
+  message: 'Enter your email address:',
+},];
 
-askUser();
 
-// Next we need to generate a ReadMe.md file
-const placeInFile = util.promisify(fs.writeFile)
+// Function to initialize creation of the app
+function init() {
+  inquirer
+    .prompt(ask)
+    .then((response) => {
+      const readmeContent = Markdown(response)
+      fs.writeFile('./README.md', readmeContent)
+      console.log('Successfully created a README.md for your project!');
+    })
+    .catch((err) => console.log('An error has occurred. Please try again.'));
 
-const init = () => {
-    askUser()
-        .then((Ui) => placeInFile('readme.md', createMDfile(Ui)))
-        .then(() => console.log('successfully created README'))
-        .catch((err) => console.error(err));
-};
+}
 
+// Call the function
 init();
