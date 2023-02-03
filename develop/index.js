@@ -1,4 +1,5 @@
 // file interactions
+// including promises
 const inquirer = require('inquirer');
 const fs = require('fs/promises');
 const Markdown = require('./utils/generateMarkdown');
