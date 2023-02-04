@@ -5,8 +5,8 @@ function Markdown(userInput) {
 ![License](https://img.shields.io/badge/license-${userInput.license}-green)
   
 ## Description
-  
 ${userInput.description}  
+
 ## Table of Contents
   - [Installation](#Installation)
   - [Usage](#Usage)
