@@ -8,9 +8,8 @@ This application prompts the user with a series of questions that will create a 
 ## Table of Contents
   - [Installation](#Installation)
   - [Usage](#Usage)
+  - [Links](#Links)
   - [License](#License)
-  - [Contrubutions](#Contributions)
-  - [Test](#Test)
   - [Questions](#Questions)
 ## Installation
 Install Node.js v16.19.0
