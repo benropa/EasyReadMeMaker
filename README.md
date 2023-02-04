@@ -18,6 +18,7 @@ Install Node.js v16.19.0
 Simply run the code by entering "node index.js" and answer the questions accordingly.
 
 ## Links
+![Screenshot 2023-02-04 at 5 20 26 PM](https://user-images.githubusercontent.com/117046452/216793642-03a89e94-d339-4408-a905-fa5ab84239bf.png)
 https://drive.google.com/file/d/1wBbJv1yjU-dXwJZP-FV8HRwKaRaETicZ/view
 
 ## License
