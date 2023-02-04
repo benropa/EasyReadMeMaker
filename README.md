@@ -17,8 +17,8 @@ Install Node.js v16.19.0
 ## Usage
 Simply run the code by entering "node index.js" and answer the questions accordingly.
 
-##
-Links: https://drive.google.com/file/d/1wBbJv1yjU-dXwJZP-FV8HRwKaRaETicZ/view
+## Links
+https://drive.google.com/file/d/1wBbJv1yjU-dXwJZP-FV8HRwKaRaETicZ/view
 
 ## License
 This project is licensed under the MIT license.
