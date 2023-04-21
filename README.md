@@ -24,5 +24,4 @@ https://drive.google.com/file/d/1wBbJv1yjU-dXwJZP-FV8HRwKaRaETicZ/view
 This project is licensed under the MIT license.
 
 ## Questions
-[github.com/benropa](https://github.com/benropa)
 If you have questions about this project please contact me at: benropa@outlook.com
